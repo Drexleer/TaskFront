@@ -4,7 +4,7 @@ import axios from 'axios';
 // console.log(apiUrl);
 
 // const API_URL = `${apiUrl}/task`;
-const API_URL = 'https://taskbackend-1vwe.onrender.com';
+const API_URL = 'https://taskbackend-1vwe.onrender.com/task';
 
 export const createTask = createAsyncThunk(
   'tasks/createTask',
