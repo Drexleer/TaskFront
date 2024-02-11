@@ -10,11 +10,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/user/register', {
-        email,
-        username,
-        password,
-      });
+      const response = await axios.post(
+        'https://taskbackend-1vwe.onrender.com/user/register',
+        {
+          email,
+          username,
+          password,
+        }
+      );
       console.log(response.data); // Maneja la respuesta del servidor según tu lógica de la aplicación
       setError('');
     } catch (error) {
