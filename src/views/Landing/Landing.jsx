@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
+import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 
 const Landing = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -18,7 +21,9 @@ const Landing = () => {
     setShowModal(true);
   };
 
-  const handleEnter = () => {};
+  const handleEnter = () => {
+    navigate('/home');
+  };
 
   return (
     <div className="landing-container">
@@ -35,12 +40,7 @@ const Landing = () => {
         >
           Register
         </button>
-        <button
-          className="btn btn-secondary"
-          onClick={() => {
-            handleEnter;
-          }}
-        >
+        <button className="btn btn-secondary" onClick={handleEnter}>
           Entrar como invitado
         </button>
       </div>

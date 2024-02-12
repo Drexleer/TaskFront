@@ -13,6 +13,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setError('Por favor, completa todos los campos.');
+      return;
+    }
+
     try {
       const response = await axios.post(
         'https://taskbackend-1vwe.onrender.com/user/login',
@@ -21,7 +27,7 @@ const Login = () => {
           password,
         }
       );
-      console.log(response.data);
+
       if (response.data.login === true) {
         dispatch(
           loginSuccess({
@@ -32,9 +38,11 @@ const Login = () => {
         navigate('/home');
       } else {
         setError(response.data.message);
+        alert('Usuario o contraseña incorrectos');
       }
     } catch (error) {
       setError('Usuario o contraseña incorrectos');
+      alert('Usuario o contraseña incorrectos');
     }
   };
 

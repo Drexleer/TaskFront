@@ -9,6 +9,12 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email || !username || !password) {
+      setError('Por favor, completa todos los campos.');
+      return;
+    }
+
     try {
       const response = await axios.post(
         'https://taskbackend-1vwe.onrender.com/user/register',
@@ -18,10 +24,16 @@ const Register = () => {
           password,
         }
       );
-      console.log(response.data); // Maneja la respuesta del servidor según tu lógica de la aplicación
+
+      console.log(response.data);
+      alert('¡Registro exitoso!');
+      setEmail('');
+      setUsername('');
+      setPassword('');
       setError('');
     } catch (error) {
       setError('Error al registrar usuario');
+      console.error('Error al registrar usuario:', error);
     }
   };
 
